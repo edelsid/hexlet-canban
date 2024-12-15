@@ -13,12 +13,14 @@ export default function AddPost({ setAddPost }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addDocument(data));
-    setData({
-      title: "",
-      text: "",
-    });
+    if (data.title !== "" && data.text !== "") {
+      dispatch(addDocument(data));
+      setData({
+        title: "",
+        text: "",
+      });
     setAddPost(false);
+    }
   }
 
   const handleChange = (e) => {
