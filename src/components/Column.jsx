@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCard } from "../store/site";
+import { setCard, changeDocs } from "../store/site";
+import { useState } from "react";
 import styles from "../styles/Column.module.css"
 import Post from "./Post"
+import AddPost from "./AddPost";
 
 export default function Column({ 
   className, 
@@ -14,10 +16,12 @@ export default function Column({
   setCurrentBoard}) {
 
   const dispatch = useDispatch();
+  const documents = useSelector(state => state.site.documents);
   const currentCard = useSelector(state => state.site.currentCard);
+  const [ addPost, setAddPost ] = useState(false);
 
-  const handleAdd = (e) => {
-    console.log(e);
+  const handleAdd = () => {
+    setAddPost(!addPost);
   }
 
   const dragStart = (e, card, board) => {
@@ -44,6 +48,13 @@ export default function Column({
     currentBoard.docs.splice(currentIndex, 1);
     const dropIndex = board.docs.indexOf(card);
     board.docs.splice(dropIndex + 1, 0, currentCard);
+
+    const newDocuments = [...documents];
+    const newCard = { ...currentCard };
+    newCard.status = board.id;
+    const docIndex = newDocuments.indexOf(currentCard);
+    newDocuments[docIndex] = newCard;
+    dispatch(changeDocs(newDocuments));
 
     setBoards(boards.map((item) => {
       if (item.id !==board.id) {
@@ -76,11 +87,12 @@ export default function Column({
       </ul>
       {className === "inProgress" && 
       <button 
-        className={styles.btn__add} 
+        className={`${styles.btn__add} ${addPost ? "active" : ""}`} 
         type="button"
         onClick={handleAdd}>
           Добавить документ
       </button>}
+      {className === "inProgress" && addPost ? <AddPost setAddPost={setAddPost}/> : <></>}
     </div>
   )
 }

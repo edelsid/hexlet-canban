@@ -28,7 +28,7 @@
   text-decoration: underline;
 }
 
-.btn__add::before {
+.btn__add::before, .active::before {
   content: "+";
   display: inline-block;
   font-size: 22px;

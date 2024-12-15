@@ -19,8 +19,18 @@ const site = createSlice({
     setCard(state, action) {
       state.currentCard = action.payload;
     },
+    changeDocs(state, action) {
+      state.documents = action.payload;
+    },
+    addDocument(state, action) {
+      const newId = state.documents.length + 1;
+      state.documents.push({
+        id: newId,
+        ...action.payload,
+      });
+    }
   },
 });
 
-export const { setCard } = site.actions;
+export const { setCard, changeDocs, addDocument } = site.actions;
 export default site.reducer;
