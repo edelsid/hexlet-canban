@@ -1,0 +1,37 @@
+.column {
+  width: 33%;
+  background-color: rgb(231, 231, 231);
+  height: fit-content;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.column__list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn__add {
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 14px;
+  color: black;
+  vertical-align: middle;
+  background-color: #ffffff00;
+  border: none;
+  padding: 0;
+}
+
+.btn__add:hover {
+  text-decoration: underline;
+}
+
+.btn__add::before {
+  content: "+";
+  display: inline-block;
+  font-size: 22px;
+  margin: 0 5px 0 5px;
+  vertical-align: middle;
+}
