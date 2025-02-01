@@ -1,5 +1,12 @@
 .app__wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 50px;
+}
+
+@media (max-width: 470px) {
+  .app__wrapper {
+    flex-direction: column;
+  }
 }
