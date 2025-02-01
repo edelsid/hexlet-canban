@@ -79,6 +79,7 @@ export default function Column({
           key={item.id} 
           title={item.title} 
           text={item.text}
+          img={item.img}
           dragStart={(e) => dragStart(e, item, board)}
           dragEnd={dragEnd}
           dragLeave={dragLeave}
@@ -92,7 +93,8 @@ export default function Column({
         onClick={handleAdd}>
           Добавить документ
       </button>}
-      {className === "inProgress" && addPost ? <AddPost setAddPost={setAddPost}/> : <></>}
+      {className === "inProgress" && addPost ? 
+        <AddPost setAddPost={setAddPost}/> : <></>}
     </div>
   )
 }

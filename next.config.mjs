@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export", 
-  basePath: "/hexlet-canban",
+  //basePath: "/hexlet-canban",
   reactStrictMode: true,
 };
 
